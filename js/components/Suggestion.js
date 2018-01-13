@@ -37,6 +37,7 @@ class Suggestion extends Component {
 
     return h('div', {
         class: `Suggestion-root${props.selected ? ' selected' : ''}`,
+        title: `${props.node.title}\n${props.node.url}`,
         onMouseMove: this.onHover,
         onClick: this.onClick,
       },

@@ -50,8 +50,8 @@ class Popup extends Component {
     switch (state.route) {
       case 'edit':
       return h(Editor, {
-        onActionDone: this.onActionDone,
-        onActionCancel: this.onActionCancel,
+        onDone: this.onActionDone,
+        onCancel: this.onActionCancel,
         activeNode: state.activeNode,
       });
 

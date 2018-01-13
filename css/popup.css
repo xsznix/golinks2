@@ -3,15 +3,17 @@ body {
   height: auto;
   margin: 0;
   background: #f6f8f9;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
+
+/* Launcher stuff */
 
 #input-wrapper {
   display: flex;
   width: 360px;
   box-sizing: border-box;
   background: #fff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1.3em;
   font-weight: 300;
 }
@@ -109,4 +111,74 @@ body {
   height: 15px;
   color: #999;
   font-size: 0.75em;
+}
+
+/* Shared editor/deleter stuff */
+
+.CancelButton-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #787d82;
+  cursor: pointer;
+}
+
+.CancelButton-root:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.CancelButton-inner {
+  padding: 0 12px;
+  text-align: center;
+}
+
+.CancelButton-x {
+  font-size: 36px;
+  font-weight: 200;
+}
+
+.CancelButton-esc {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.SaveButton {
+  padding: 10px 8px 10px 59px;
+  background: #2980b9;
+  color: #fff;
+  cursor: pointer;
+}
+
+.SaveButton.disabled {
+  background: none;
+  color: #7f8c8d;
+  cursor: default;
+}
+
+.SaveButton:not(.disabled):hover {
+  background: #3498db;
+}
+
+/* Editor stuff */
+
+.Editor-root {
+  width: 360px;
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.Editor-form {
+  display: flex;
+}
+
+.Editor-input-wrapper {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.Editor-input {
+  padding: 10px 8px;
+  font: inherit;
 }

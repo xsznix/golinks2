@@ -5,31 +5,31 @@ const Commands = (() => {
 
   Commands.COMMANDS = {
     mark: {
-      desc: 'Bookmark this page',
+      desc: 'bookmark this page',
       info: 'a memorable keyword',
     },
     copy: {
-      desc: 'Copy a golink',
+      desc: 'copy a golink',
       info: 'golink url to clipboard',
     },
     edit: {
-      desc: 'Edit a golink',
+      desc: 'edit a golink',
       info: 'golink',
     },
     delete: {
-      desc: 'Delete a golink',
+      desc: 'delete a golink',
       info: 'golink',
     },
     search: {
-      desc: 'Search Chrome bookmarks',
+      desc: 'search chrome bookmarks',
       info: 'chrome bookmarks',
     },
     list: {
-      desc: 'View and manage golinks',
+      desc: 'view and manage golinks',
       info: 'press enter',
     },
     help: {
-      desc: 'Learn how to use Golinks',
+      desc: 'learn how to use Golinks',
       info: 'press enter',
     },
   };

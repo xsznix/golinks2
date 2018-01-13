@@ -92,5 +92,18 @@ const Store = (() => {
     return;
   }
 
+  /**
+   * Updates a golink with new properties.
+   */
+  Store.update = async function update(node, title, url) {
+    const newProps = {title, url};
+    await AsyncChrome.Bookmarks.update(node.id, newProps);
+    await AsyncChrome.Bookmarks.move(node.id, {index: 0});
+    const oldIndex = cache.findIndex(n => node.id = n.id);
+    cache.splice(oldIndex, 1);
+    const newNode = Object.assign({}, node, {title, url});
+    cache.unshift(newNode);
+  }
+
   return Store;
 })();

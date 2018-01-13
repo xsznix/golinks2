@@ -242,7 +242,7 @@ class Launcher extends Component {
           ref: el => {this.input = el},
           type: 'text',
           placeholder:
-            state.command.length && Commands.COMMANDS[state.command].info || 'Type "/" for more options',
+            state.command.length && Commands.COMMANDS[state.command].info || 'type "/" for more options',
           value: state.query,
           onInput: this.onInput,
           onBlur: this.refocus,
