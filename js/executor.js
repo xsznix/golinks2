@@ -40,6 +40,10 @@ const Executor = (() => {
     close();
   }
 
+  Executor.execList = async function execList() {
+    await AsyncChrome.Tabs.create({url: `chrome://bookmarks/?id=${Store.getFolderId()}`});
+  }
+
   async function navigate(url) {
     const [tabs] = await AsyncChrome.Tabs.query({currentWindow: true, active: true});
     if (tabs) {

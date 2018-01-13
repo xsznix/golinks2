@@ -105,5 +105,9 @@ const Store = (() => {
     cache.unshift(newNode);
   }
 
+  Store.getFolderId = function getFolderId() {
+    return folderId;
+  }
+
   return Store;
 })();

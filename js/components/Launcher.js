@@ -168,6 +168,8 @@ class Launcher extends Component {
     } else {
       if (this.state.command === 'mark') {
         Executor.execMark(this.state.query);
+      } else if (this.state.command === 'list') {
+        Executor.execList();
       }
     }
   }
