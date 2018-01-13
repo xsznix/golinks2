@@ -19,6 +19,7 @@ class Launcher extends Component {
     this.onSuggestionClick = this.onSuggestionClick.bind(this);
     this.setInputValue = this.setInputValue.bind(this);
     this.refreshSuggestions = this.refreshSuggestions.bind(this);
+    this.refocus = this.refocus.bind(this);
     this.state = Object.assign({
       command: '',
       typedCommand: '',
@@ -54,7 +55,32 @@ class Launcher extends Component {
           query: '/' + this.state.typedCommand,
           selectedIndex: 0,
         }, () => {
-          document.getElementById('input').setSelectionRange(newLength, newLength);
+          this.input.setSelectionRange(newLength, newLength);
+        });
+        this.refreshSuggestions();
+      }
+      break;
+
+      // Clear input
+      case 'Escape':
+      if (this.state.query.length) {
+        event.preventDefault();
+        this.setState({
+          query: '',
+          selectedIndex: 0,
+        }, () => {
+          this.input.setSelectionRange(0, 0);
+        });
+        this.refreshSuggestions();
+      } else if (this.state.command.length) {
+        event.preventDefault();
+        this.setState({
+          command: '',
+          typedCommand: '',
+          query: '',
+          selectedIndex: 0,
+        }, () => {
+          this.input.setSelectionRange(0, 0);
         });
         this.refreshSuggestions();
       }
@@ -105,7 +131,10 @@ class Launcher extends Component {
   }
 
   refocus() {
-    document.getElementById('input').focus();
+    // Don't try to refocus if we have been unmounted
+    if (!this._disable) {
+      this.input.focus();
+    }
   }
 
   executeMainAction() {
@@ -153,7 +182,7 @@ class Launcher extends Component {
           query: maybeCommand.rest,
           selectedIndex: 0,
         }, () => {
-          document.getElementById('input').select();
+          this.input.select();
         });
         return;
       }
@@ -210,6 +239,7 @@ class Launcher extends Component {
           h('div', {id: 'command', class: state.command}, `${state.command}:`) : null,
         h('input', {
           id: 'input',
+          ref: el => {this.input = el},
           type: 'text',
           placeholder:
             state.command.length && Commands.COMMANDS[state.command].info || 'Type "/" for more options',
