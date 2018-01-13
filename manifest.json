@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "Golinks 2",
+  "description": "Search-based bookmarks.",
+  "version": "2.0.0",
+
+  "permissions": [
+    "https://*/*",
+    "http://*/*",
+    "chrome://favicon/",
+    "activeTab",
+    "bookmarks",
+    "storage"
+  ],
+
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "js/asyncify.js",
+      "js/chromeapi.js",
+      "js/store.js",
+      "js/onboarding.js",
+      "js/main.js"
+    ]
+  },
+
+  "browser_action": {
+    "default_title": "Golinks",
+    "default_popup": "popup.html"
+  },
+
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+L",
+        "mac": "Command+Shift+Space",
+        "windows": "Ctrl+Shift+L",
+        "windows": "Ctrl+Shift+L"
+      }
+    }
+  },
+
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}

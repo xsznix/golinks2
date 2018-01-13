@@ -1,0 +1,112 @@
+body {
+  width: 360px;
+  height: auto;
+  margin: 0;
+  background: #f6f8f9;
+  font-size: 16px;
+}
+
+#input-wrapper {
+  display: flex;
+  width: 360px;
+  box-sizing: border-box;
+  background: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+#command {
+  background: #f6f8f9;
+  color: #fff;
+  padding: 10px 12px;
+}
+
+#command.mark {
+  background: #27ae60;
+}
+
+#command.copy {
+  background: #34495e;
+}
+
+#command.search {
+  background: #2980b9;
+}
+
+#command.edit {
+  background: #f39c12;
+}
+
+#command.delete {
+  background: #c0392b;
+}
+
+#command.help {
+  background: #8e44ad;
+}
+
+#command.list {
+  background: #1abc9c;
+}
+
+#input {
+  flex: 1 1;
+  width: 0;
+  border: none;
+  padding: 10px 8px;
+  outline: none;
+  background: none;
+  font: inherit;
+}
+
+.Suggestion-root {
+  display: flex;
+  width: 100%;
+  padding: 6px 9px;
+  box-sizing: border-box;
+}
+
+.Suggestion-root.selected {
+  background: #dce8ff;
+}
+
+.Suggestion-favicon-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  margin-right: 9px;
+}
+
+.Suggestion-favicon {
+  width: 24px;
+  height: 24px;
+}
+
+.Suggestion-text-wrapper {
+  flex: 1 1;
+  width: 0;
+}
+
+.Suggestion-title, .Suggestion-url, .Suggestion-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Suggestion-title {
+  height: 24px;
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.Suggestion-url {
+  height: 15px;
+  color: #27ae60;
+  font-size: 0.75em;
+}
+
+.Suggestion-description {
+  height: 15px;
+  color: #999;
+  font-size: 0.75em;
+}
