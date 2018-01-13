@@ -138,20 +138,26 @@ class Launcher extends Component {
   }
 
   executeMainAction() {
-    // TODO: mark, edit, delete, list, help
+    // TODO: delete
     if (this.state.suggestions.length) {
       const selectedNode = this.state.suggestions[this.state.selectedIndex];
       if (this.state.command === '') {
         if (this.state.query[0] === '/') {
-          this.setState({
-            command: selectedNode.title,
-            typedCommand: selectedNode.title,
-            query: '',
-            selectedIndex: 0,
-          }, () => {
-            this.refreshSuggestions();
-            document.getElementById('input').select();
-          });
+          if (selectedNode.title === 'list') {
+            Executor.execList();
+          } else if (selectedNode.title === 'help') {
+            Onboarding.show();
+          } else {
+            this.setState({
+              command: selectedNode.title,
+              typedCommand: selectedNode.title,
+              query: '',
+              selectedIndex: 0,
+            }, () => {
+              this.refreshSuggestions();
+              document.getElementById('input').select();
+            });
+          }
         } else {
           Executor.execGolink(selectedNode, this.state.query);
         }
