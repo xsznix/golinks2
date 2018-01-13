@@ -154,6 +154,11 @@ class Popup extends Component {
       }
     }
 
+    // Prevent pasting in slashes
+    if (this.state.command === 'mark' && val.indexOf('/') !== -1) {
+      val = val.replace(/\//g, '');
+    }
+
     this.setState({
       query: val,
       selectedIndex: 0,
