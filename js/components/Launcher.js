@@ -1,6 +1,9 @@
 'use strict';
 
-// Props: none
+// Props:
+//  - onStartEdit: (chrome.bookmarks.BookmarkTreeNode, this.state) -> void
+//  - onStartDelete: (chrome.bookmarks.BookmarkTreeNode, this.state) -> void
+//  - initialState: this.state
 // State:
 //  - command: string
 //  - typedCommand: string
@@ -16,13 +19,13 @@ class Launcher extends Component {
     this.onSuggestionClick = this.onSuggestionClick.bind(this);
     this.setInputValue = this.setInputValue.bind(this);
     this.refreshSuggestions = this.refreshSuggestions.bind(this);
-    this.state = {
+    this.state = Object.assign({
       command: '',
       typedCommand: '',
       query: '',
       selectedIndex: 0,
       suggestions: [],
-    };
+    }, props.initialState);
   }
 
   componentDidMount() {
@@ -130,6 +133,8 @@ class Launcher extends Component {
         return;
       } else if (this.state.command === 'copy') {
         Executor.execCopy(selectedNode);
+      } else if (this.state.command === 'edit') {
+        this.props.onStartEdit(selectedNode, this.state);
       }
     } else {
       if (this.state.command === 'mark') {
