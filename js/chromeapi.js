@@ -13,6 +13,7 @@ const AsyncChrome = (() => {
     get: asyncify(chrome.bookmarks.get),
     getChildren: asyncify(chrome.bookmarks.getChildren),
     move: asyncify(chrome.bookmarks.move),
+    remove: asyncify(chrome.bookmarks.remove),
     search: asyncify(chrome.bookmarks.search),
     update: asyncify(chrome.bookmarks.update),
   };

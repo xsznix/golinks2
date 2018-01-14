@@ -124,7 +124,7 @@ class Editor extends Component {
       ),
       h(SaveButton, {
         disabled: !state.isValid,
-        value: state.isValid ? 'save [enter]' : state.errorMessage,
+        value: state.isValid ? 'save' : state.errorMessage,
         onClick: this.trySave,
       }),
     );

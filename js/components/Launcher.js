@@ -138,7 +138,6 @@ class Launcher extends Component {
   }
 
   executeMainAction() {
-    // TODO: delete
     if (this.state.suggestions.length) {
       const selectedNode = this.state.suggestions[this.state.selectedIndex];
       if (this.state.command === '') {
@@ -170,6 +169,8 @@ class Launcher extends Component {
         Executor.execCopy(selectedNode);
       } else if (this.state.command === 'edit') {
         this.props.onStartEdit(selectedNode, this.state);
+      } else if (this.state.command === 'delete') {
+        this.props.onStartDelete(selectedNode, this.state);
       }
     } else {
       if (this.state.command === 'mark') {

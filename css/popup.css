@@ -147,7 +147,13 @@ body {
   padding: 10px 8px 10px 59px;
   background: #2980b9;
   color: #fff;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
+}
+
+.SaveButton.deleter {
+  background: #c0392b;
 }
 
 .SaveButton.disabled {
@@ -160,15 +166,17 @@ body {
   background: #3498db;
 }
 
-/* Editor stuff */
+.SaveButton.deleter:not(.disabled):hover {
+  background: #e74c3c;
+}
 
-.Editor-root {
+.Editor-root, .Deleter-root {
   width: 360px;
   font-size: 1.3em;
   font-weight: 300;
 }
 
-.Editor-form {
+.Editor-form, .Deleter-form {
   display: flex;
 }
 
@@ -181,4 +189,13 @@ body {
 .Editor-input {
   padding: 10px 8px;
   font: inherit;
+}
+
+.Deleter-inner {
+  display: block;
+  margin: 25px 10px 30px;
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
 }

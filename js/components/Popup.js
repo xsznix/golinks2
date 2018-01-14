@@ -55,6 +55,13 @@ class Popup extends Component {
         activeNode: state.activeNode,
       });
 
+      case 'delete':
+      return h(Deleter, {
+        onDone: this.onActionDone,
+        onCancel: this.onActionCancel,
+        activeNode: state.activeNode,
+      });
+
       case 'launch':
       default:
       return h(Launcher, {
