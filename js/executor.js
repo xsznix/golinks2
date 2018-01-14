@@ -23,11 +23,12 @@ const Executor = (() => {
     }
   }
 
-  Executor.execCopy = function execCopy(selectedNode, query) {
+  Executor.execCopy = async function execCopy(selectedNode, query) {
     const input = document.getElementById('input');
     input.value = parseUrlWithAppend(selectedNode.url, query);
     input.select();
     document.execCommand('Copy');
+    await Store.markAccessed(selectedNode);
     close();
   }
 
