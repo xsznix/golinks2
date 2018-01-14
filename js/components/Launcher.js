@@ -140,7 +140,8 @@ class Launcher extends Component {
   executeMainAction() {
     if (this.state.suggestions.length) {
       const selectedNode = this.state.suggestions[this.state.selectedIndex];
-      if (this.state.command === '') {
+      switch (this.state.command) {
+        case '':
         if (this.state.query[0] === '/') {
           if (selectedNode.title === 'list') {
             Executor.execList();
@@ -160,23 +161,37 @@ class Launcher extends Component {
         } else {
           Executor.execGolink(selectedNode, this.state.query);
         }
-      } else if (this.state.command === 'search') {
+        break;
+
+        case 'search':
         Executor.execChromeBookmark(selectedNode);
-      } else if (this.state.command === 'mark') {
+        break;
+
+        case 'mark':
         // Don't let the user create duplicate names
         return;
-      } else if (this.state.command === 'copy') {
+
+        case 'copy':
         Executor.execCopy(selectedNode);
-      } else if (this.state.command === 'edit') {
+        break;
+
+        case 'edit':
         this.props.onStartEdit(selectedNode, this.state);
-      } else if (this.state.command === 'delete') {
+        break;
+
+        case 'delete':
         this.props.onStartDelete(selectedNode, this.state);
+        break;
       }
     } else {
-      if (this.state.command === 'mark') {
+      switch (this.state.command) {
+        case 'mark':
         Executor.execMark(this.state.query);
-      } else if (this.state.command === 'list') {
+        break;
+
+        case 'list':
         Executor.execList();
+        break;
       }
     }
   }
