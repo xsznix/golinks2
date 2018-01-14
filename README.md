@@ -2,6 +2,8 @@
 
 Dead simple golinks, and it looks cool now.
 
+![Screenshot](imgsrc/screenshot.png)
+
 ## Key differences
 
 * New launcher-style interface that does everything. Golinks 2 no longer uses the omnibox for anything.
