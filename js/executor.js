@@ -3,24 +3,15 @@
 const Executor = (() => {
   const Executor = {};
 
-  Executor.execGolink = async function execGolink(node, query) {
+  Executor.execGolink = async function execGolink(node, query, disposition) {
     await Store.markAccessed(node);
-    let url, slashIndex = query.indexOf('/');
-    if (slashIndex !== -1) {
-      if (node.url.endsWith('/')) {
-        url = node.url + query.substring(slashIndex + 1);
-      } else {
-        url = node.url + query.substring(slashIndex);
-      }
-    } else {
-      url = node.url;
-    }
-    await navigate(url);
+    const url = parseUrlWithAppend(node.url, query);
+    await navigate(url, disposition);
     close();
   }
 
-  Executor.execChromeBookmark = async function execChromeBookmark(node) {
-    await navigate(node.url);
+  Executor.execChromeBookmark = async function execChromeBookmark(node, disposition) {
+    await navigate(node.url, disposition);
     close();
   }
 
@@ -32,9 +23,9 @@ const Executor = (() => {
     }
   }
 
-  Executor.execCopy = function execCopy(selectedNode) {
+  Executor.execCopy = function execCopy(selectedNode, query) {
     const input = document.getElementById('input');
-    input.value = selectedNode.url;
+    input.value = parseUrlWithAppend(selectedNode.url, query);
     input.select();
     document.execCommand('Copy');
     close();
@@ -44,10 +35,38 @@ const Executor = (() => {
     await AsyncChrome.Tabs.create({url: `chrome://bookmarks/?id=${Store.getFolderId()}`});
   }
 
-  async function navigate(url) {
-    const [tabs] = await AsyncChrome.Tabs.query({currentWindow: true, active: true});
-    if (tabs) {
-      await AsyncChrome.Tabs.update(tabs[0].id, {url});
+  function parseUrlWithAppend(base, query) {
+    let slashIndex = query.indexOf('/');
+    if (slashIndex !== -1) {
+      if (base.endsWith('/')) {
+        return base + query.substring(slashIndex + 1);
+      } else {
+        return base + query.substring(slashIndex);
+      }
+    } else {
+      return base;
+    }
+  }
+
+  async function navigate(url, disposition) {
+    switch (disposition) {
+      case 'sametab':
+      const [tabs] = await AsyncChrome.Tabs.query({currentWindow: true, active: true});
+      if (tabs) {
+        await AsyncChrome.Tabs.update(tabs[0].id, {url});
+      }
+      break;
+
+      case 'newtab':
+      await AsyncChrome.Tabs.create({url});
+      break;
+
+      case 'newtab_hidden':
+      await AsyncChrome.Tabs.create({url, active: false});
+      break;
+
+      case 'newwin':
+      await AsyncChrome.Windows.create({url});
     }
   }
 

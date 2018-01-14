@@ -5,7 +5,7 @@
 //  - index: number
 //  - selected: boolean
 //  - onHover: number => void
-//  - onClick: number => void
+//  - onClick: (number, Event) => void
 class Suggestion extends Component {
   constructor(props) {
     super(props);
@@ -17,8 +17,8 @@ class Suggestion extends Component {
     this.props.onHover(this.props.index);
   }
 
-  onClick() {
-    this.props.onClick(this.props.index);
+  onClick(event) {
+    this.props.onClick(this.props.index, event);
   }
 
   render(props) {

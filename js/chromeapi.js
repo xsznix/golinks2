@@ -24,5 +24,9 @@ const AsyncChrome = (() => {
     update: asyncify(chrome.tabs.update),
   };
 
+  AsyncChrome.Windows = {
+    create: asyncify(chrome.windows.create),
+  };
+
   return AsyncChrome;
 })();

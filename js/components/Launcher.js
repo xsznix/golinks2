@@ -104,7 +104,7 @@ class Launcher extends Component {
       // Trigger main action
       case 'Enter':
       event.preventDefault();
-      this.executeMainAction();
+      this.executeMainAction(this.getDisposition(event));
       break;
 
       // Don't allow slashes in golink names
@@ -124,10 +124,12 @@ class Launcher extends Component {
     }
   }
 
-  onSuggestionClick(index) {
+  onSuggestionClick(index, event) {
     this.setState({
       selectedIndex: index,
-    }, this.executeMainAction);
+    }, () => {
+      this.executeMainAction(this.getDisposition(event));
+    });
   }
 
   refocus() {
@@ -137,7 +139,7 @@ class Launcher extends Component {
     }
   }
 
-  executeMainAction() {
+  executeMainAction(disposition) {
     if (this.state.suggestions.length) {
       const selectedNode = this.state.suggestions[this.state.selectedIndex];
       switch (this.state.command) {
@@ -159,12 +161,12 @@ class Launcher extends Component {
             });
           }
         } else {
-          Executor.execGolink(selectedNode, this.state.query);
+          Executor.execGolink(selectedNode, this.state.query, disposition);
         }
         break;
 
         case 'search':
-        Executor.execChromeBookmark(selectedNode);
+        Executor.execChromeBookmark(selectedNode, disposition);
         break;
 
         case 'mark':
@@ -172,7 +174,7 @@ class Launcher extends Component {
         return;
 
         case 'copy':
-        Executor.execCopy(selectedNode);
+        Executor.execCopy(selectedNode, this.state.query);
         break;
 
         case 'edit':
@@ -192,6 +194,22 @@ class Launcher extends Component {
         case 'list':
         Executor.execList();
         break;
+      }
+    }
+  }
+
+  getDisposition(event) {
+    if (event[USER_OS === 'mac' ? 'metaKey' : 'ctrlKey']) {
+      if (event.shiftKey) {
+        return 'newtab_hidden';
+      } else {
+        return 'newtab';
+      }
+    } else {
+      if (event.shiftKey) {
+        return 'newwin';
+      } else {
+        return 'sametab';
       }
     }
   }
