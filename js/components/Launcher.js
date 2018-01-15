@@ -194,6 +194,10 @@ class Launcher extends Component {
         case 'list':
         Executor.execList();
         break;
+
+        case 'help':
+        Onboarding.show();
+        break;
       }
     }
   }

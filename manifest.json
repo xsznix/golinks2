@@ -39,8 +39,8 @@
       "suggested_key": {
         "windows": "Ctrl+Shift+Space",
         "mac": "Command+Shift+Space",
-        "windows": "Ctrl+Shift+Space",
-        "windows": "Ctrl+Shift+Space"
+        "linux": "Ctrl+Shift+Space",
+        "chromeos": "Ctrl+Shift+Space"
       }
     }
   },

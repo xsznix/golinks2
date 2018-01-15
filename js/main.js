@@ -5,6 +5,4 @@
     await Onboarding.show();
     await Onboarding.markAsComplete();
   }
-
-  Store.setup();
 })();
