@@ -2,17 +2,21 @@
 
 const Store = (() => {
   const Store = {};
-  const FOLDER_ID_KEY = 'folder_id';
+  const BOOKMARK_NAME = 'Golinks';
   let folderId, loaded = false, cache;
 
   Store.setup = async function setup() {
-    const [snapshot] = await AsyncChrome.Storage.get(FOLDER_ID_KEY);
-    if (!snapshot[FOLDER_ID_KEY]) {
-      const [golinksFolder] = await AsyncChrome.Bookmarks.create({title: 'Golinks'});
-      await AsyncChrome.Storage.set({[FOLDER_ID_KEY]: golinksFolder.id});
-      folderId = golinksFolder.id;
+    let [results] = await AsyncChrome.Bookmarks.search({title: BOOKMARK_NAME});
+    results = results
+      // folders only
+      .filter(r => !r.url)
+      // get most recently modified; this is most likely to be our folder
+      .sort((a, b) => b.dateGroupModified - a.dateGroupModified);
+    if (!results.length) {
+      const [folder] = await AsyncChrome.Bookmarks.create({title: BOOKMARK_NAME});
+      folderId = folder.id;
     } else {
-      folderId = snapshot[FOLDER_ID_KEY];
+      folderId = results[0].id;
     }
   };
 

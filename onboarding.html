@@ -20,8 +20,10 @@
   <p>Once you collect many golinks, you can start typing the keyword for the link you want into the search bar to find it. When you press <code>Enter</code>, it will follow the highlighted link.</p>
   <h3>Step 4: Everything else</h3>
   <p>Open the Golinks launcher and type <code>/</code>. This will show you everything else you can do with Golinks.</p>
-  <p>Congrats! You now know how to mark and follow golinks!</p>
+  <p>Congrats! You now know how to mark and follow golinks! If you find Golinks useful, please be sure to leave a review on <a href="https://chrome.google.com/webstore/detail/golinks-2/ifddlpbonpoebonmmmpellcgigmjbknj">the Chrome web store page</a>.</p>
   <h2>Advanced Features</h2>
+  <h3>Import links</h3>
+  <p>To import your existing bookmarks in bulk, use the <code>/list</code> command to get to Chrome's bookmark manager and then drag and drop your bookmarks into the Golinks folder. Do not drag entire folders into the Golinks folder; Golinks will ignore them.</p>
   <h3>Open links in new tabs and windows</h3>
   <p>To open a golink in a new tab, hold down <code>Ctrl</code> (<code>Cmd</code> on Macs) when clicking the link or pressing <code>Enter</code>.</p>
   <p>To open a golink in the background, hold down <code>Ctrl</code> and <code>Shift</code>.</p>
@@ -34,5 +36,10 @@
   <h3>Use variable golinks</h3>
   <p>You can add to the end of a URL when you visit it by typing a <code>/</code> after your golink keyword. For example, if you bookmarked <code>https://reddit.com/r/</code> as a golink using the keyword <code>r</code>, you can visit your favorite subreddits by typing <code>r/funny</code> or <code>r/all</code> into the Golinks launcher.</p>
   <p>Another great site to do this with is GitHub. If you have GitHub bookmarked as <code>gh</code>, you could view the source code for this extension using <code>gh/xsznix/golinks2</code>.</p>
+  <h2>Technical Details and Caveats</h2>
+  <h3>How Golinks stores its data</h3>
+  <p>Golinks creates a special folder in your Chrome bookmarks to store golinks. It identifies this folder by its title, "Golinks". You may move this folder if you prefer to put it somewhere else, but if you rename it, Golinks will not find the golinks inside it. If you already had a folder called "Golinks" before you installed Golinks, Golinks will use that folder for golinks. If you uninstall Golinks, your golinks will not be deleted so that you can still access them. If you then reinstall Golinks, it will use the Golinks folder from your previous installation (unless you renamed or deleted it).</p>
+  <h3>Use your Golinks everywhere</h3>
+  <p>Your Golinks are available anywhere you are signed into Chrome and are syncing your bookmarks. To access your golinks on mobile Chrome, use Chrome's bookmark search and navigate to your Golinks folder. The golinks you most recently accessed on desktop will be at the top, and accessing golinks on mobile will not move them to the top of the folder like on desktop.</p>
 </body>
 </html>
