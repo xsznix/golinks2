@@ -20,13 +20,13 @@ const Commands = (() => {
       desc: 'delete a golink',
       info: 'golink',
     },
-    search: {
-      desc: 'search chrome bookmarks',
-      info: 'chrome bookmarks',
-    },
     list: {
       desc: 'view and manage golinks',
       info: 'press enter',
+    },
+    search: {
+      desc: 'search chrome bookmarks',
+      info: 'chrome bookmarks',
     },
     tab: {
       desc: 'switch to another tab',
