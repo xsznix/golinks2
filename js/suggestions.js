@@ -88,17 +88,7 @@ const Suggestions = (() => {
     }
 
     if (command === 'history') {
-      const [items] = await AsyncChrome.History.search({
-        text: query,
-        startTime: +new Date - 3 * 24 * 3600 * 1000,
-        maxResults: 10,
-      });
-      items.forEach(item => {
-        Object.assign(item, {
-          specialType: 'history',
-        });
-      });
-      return items;
+      return await History.query(query);
     }
 
     return [];
