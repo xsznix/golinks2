@@ -52,6 +52,10 @@ body {
   background: #1abc9c;
 }
 
+#command.tab {
+  background: #7f8c8d;
+}
+
 #input {
   flex: 1 1;
   width: 0;

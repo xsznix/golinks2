@@ -28,6 +28,10 @@ const Commands = (() => {
       desc: 'view and manage golinks',
       info: 'press enter',
     },
+    tab: {
+      desc: 'switch to another tab',
+      info: 'title or url',
+    },
     help: {
       desc: 'learn how to use Golinks',
       info: 'press enter',
@@ -41,6 +45,7 @@ const Commands = (() => {
     d: 'delete',
     s: 'search',
     l: 'list',
+    t: 'tab',
     h: 'help',
   };
 

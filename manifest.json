@@ -14,7 +14,7 @@
 
   "permissions": [
     "chrome://favicon/",
-    "activeTab",
+    "tabs",
     "bookmarks",
     "storage"
   ],

@@ -177,6 +177,10 @@ class Launcher extends Component {
         Executor.execCopy(selectedNode, this.state.query);
         break;
 
+        case 'tab':
+        Executor.execTab(selectedNode);
+        break;
+
         case 'edit':
         this.props.onStartEdit(selectedNode, this.state);
         break;

@@ -36,6 +36,11 @@ const Executor = (() => {
     await AsyncChrome.Tabs.create({url: `chrome://bookmarks/?id=${Store.getFolderId()}`});
   }
 
+  Executor.execTab = async function execTab(node) {
+    await AsyncChrome.Tabs.update(node.id, {active: true});
+    await AsyncChrome.Windows.update(node.windowId, {focused: true});
+  }
+
   function parseUrlWithAppend(base, query) {
     let slashIndex = query.indexOf('/');
     if (slashIndex !== -1) {

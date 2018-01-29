@@ -83,6 +83,10 @@ const Suggestions = (() => {
       return await Suggestions.forDuplicateCheck(query);
     }
 
+    if (command === 'tab') {
+      return await Tabs.query(query);
+    }
+
     return [];
   }
 
