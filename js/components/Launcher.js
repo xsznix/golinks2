@@ -147,7 +147,7 @@ class Launcher extends Component {
         if (this.state.query[0] === '/') {
           if (selectedNode.title === 'list') {
             Executor.execList();
-          } else if (selectedNode.title === 'help') {
+          } else if (selectedNode.title === '?') {
             Onboarding.show();
           } else {
             this.setState({
@@ -181,6 +181,10 @@ class Launcher extends Component {
         Executor.execTab(selectedNode);
         break;
 
+        case 'history':
+        Executor.execHistory(selectedNode, disposition);
+        break;
+
         case 'edit':
         this.props.onStartEdit(selectedNode, this.state);
         break;
@@ -199,7 +203,7 @@ class Launcher extends Component {
         Executor.execList();
         break;
 
-        case 'help':
+        case '?':
         Onboarding.show();
         break;
       }
@@ -286,7 +290,7 @@ class Launcher extends Component {
     return h('div', {class: 'Popup-root'},
       h('div', {id: 'input-wrapper'},
         state.command.length ?
-          h('div', {id: 'command', class: state.command}, `${state.command}:`) : null,
+          h('div', {id: 'command', class: state.command === '?' ? 'help' : state.command}, `${state.command}:`) : null,
         h('input', {
           id: 'input',
           ref: el => {this.input = el},

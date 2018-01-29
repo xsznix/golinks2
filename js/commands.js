@@ -32,7 +32,11 @@ const Commands = (() => {
       desc: 'switch to another tab',
       info: 'title or url',
     },
-    help: {
+    history: {
+      desc: 'search browsing history',
+      info: 'title or url',
+    },
+    '?': {
       desc: 'learn how to use Golinks',
       info: 'press enter',
     },
@@ -46,7 +50,7 @@ const Commands = (() => {
     s: 'search',
     l: 'list',
     t: 'tab',
-    h: 'help',
+    h: 'history',
   };
 
   Commands.COMMAND_LIST = Object.keys(Commands.COMMANDS).map(key => ({

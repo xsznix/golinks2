@@ -56,6 +56,10 @@ body {
   background: #7f8c8d;
 }
 
+#command.history {
+  background: #8e44ad;
+}
+
 #input {
   flex: 1 1;
   width: 0;

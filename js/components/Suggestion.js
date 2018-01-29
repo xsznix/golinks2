@@ -45,7 +45,7 @@ class Suggestion extends Component {
         h('img', {class: 'Suggestion-favicon', src: `chrome://favicon/size/24@2x/${props.node.url}`}),
       ),
       h('div', {class: 'Suggestion-text-wrapper'},
-        h('div', {class: 'Suggestion-title'}, props.node.title),
+        h('div', {class: 'Suggestion-title'}, props.node.title || props.node.url),
         h('div', {class: 'Suggestion-url'}, props.node.url),
       ),
     );

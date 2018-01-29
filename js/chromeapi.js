@@ -18,6 +18,10 @@ const AsyncChrome = (() => {
     update: asyncify(chrome.bookmarks.update),
   };
 
+  AsyncChrome.History = {
+    search: asyncify(chrome.history.search),
+  };
+
   AsyncChrome.Tabs = {
     create: asyncify(chrome.tabs.create),
     query: asyncify(chrome.tabs.query),

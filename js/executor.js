@@ -39,6 +39,12 @@ const Executor = (() => {
   Executor.execTab = async function execTab(node) {
     await AsyncChrome.Tabs.update(node.id, {active: true});
     await AsyncChrome.Windows.update(node.windowId, {focused: true});
+    close();
+  }
+
+  Executor.execHistory = async function execHistory(node, disposition) {
+    await navigate(node.url, disposition);
+    close();
   }
 
   function parseUrlWithAppend(base, query) {

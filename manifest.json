@@ -16,6 +16,7 @@
     "chrome://favicon/",
     "tabs",
     "bookmarks",
+    "history",
     "storage"
   ],
 
@@ -23,6 +24,7 @@
     "persistent": false,
     "scripts": [
       "js/asyncify.js",
+      "js/changelog.js",
       "js/chromeapi.js",
       "js/store.js",
       "js/onboarding.js",
