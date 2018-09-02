@@ -89,8 +89,10 @@ class Launcher extends Component {
       // Change selection
       case 'ArrowUp':
       case 'ArrowDown':
+      case 'Tab':
       event.preventDefault();
-      const delta = event.key === 'ArrowDown' ? 1 : -1;
+      const moveDown = event.key === 'ArrowDown' || event.key === 'Tab' && !event.getModifierState('Shift');
+      const delta = moveDown ? 1 : -1;
       if (this.state.suggestions.length) {
         let nextSelectedIndex =
           (this.state.selectedIndex + delta + this.state.suggestions.length)
