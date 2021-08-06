@@ -98,8 +98,7 @@ const Store = (() => {
   /**
    * Updates a golink with new properties. Leaves the cache stale.
    */
-  Store.update = async function update(node, title, url) {
-    const newProps = {title, url};
+  Store.update = async function update(node, newProps) {
     await AsyncChrome.Bookmarks.update(node.id, newProps);
     await AsyncChrome.Bookmarks.move(node.id, {index: 0});
     // const oldIndex = cache.findIndex(n => node.id = n.id);

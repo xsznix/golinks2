@@ -178,13 +178,13 @@ body {
   background: #e74c3c;
 }
 
-.Editor-root, .Deleter-root {
+.Editor-root, .Deleter-root, .Updater-root {
   width: 360px;
   font-size: 1.3em;
   font-weight: 300;
 }
 
-.Editor-form, .Deleter-form {
+.Editor-form, .Deleter-form, .Updater-form {
   display: flex;
 }
 
@@ -199,7 +199,7 @@ body {
   font: inherit;
 }
 
-.Deleter-inner {
+.Deleter-inner, .Updater-inner {
   display: block;
   margin: 25px 10px 30px;
   outline: none;

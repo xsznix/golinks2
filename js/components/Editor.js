@@ -79,7 +79,10 @@ class Editor extends Component {
     if (this.state.isValid) {
       if (this.state.title !== this.props.activeNode.title ||
           this.state.url !== this.props.activeNode.url) {
-        Store.update(this.props.activeNode, this.state.title, this.state.url);
+        Store.update(
+          this.props.activeNode,
+          {title: this.state.title, url: this.state.url},
+        );
       }
       this.props.onDone();
     }

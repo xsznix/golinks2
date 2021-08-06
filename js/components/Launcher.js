@@ -3,6 +3,7 @@
 // Props:
 //  - onStartEdit: (chrome.bookmarks.BookmarkTreeNode, this.state) -> void
 //  - onStartDelete: (chrome.bookmarks.BookmarkTreeNode, this.state) -> void
+//  - onStartUpdate: (chrome.bookmarks.BookmarkTreeNode, this.state) -> void
 //  - initialState: this.state
 // State:
 //  - command: string
@@ -172,7 +173,7 @@ class Launcher extends Component {
         break;
 
         case 'mark':
-        // Don't let the user create duplicate names
+        this.props.onStartUpdate(selectedNode, this.state);
         return;
 
         case 'copy':

@@ -1,12 +1,12 @@
 'use strict';
 
 // Used to make Chrome APIs that accept a callback into awaitable APIs.
-function asyncify(api) {
+function asyncify(obj, key) {
   return function() {
     const args = [].slice.call(arguments);
     return new Promise((resolve, reject) => {
       args.push(parseResult);
-      api.apply(null, args);
+      obj[key].apply(obj, args);
 
       function parseResult() {
         const err = chrome.runtime.lastError;

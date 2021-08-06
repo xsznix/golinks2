@@ -10,6 +10,7 @@ class Popup extends Component {
     super(props);
     this.onStartEdit = this.onStartEdit.bind(this);
     this.onStartDelete = this.onStartDelete.bind(this);
+    this.onStartUpdate = this.onStartUpdate.bind(this);
     this.onActionDone = this.onActionDone.bind(this);
     this.onActionCancel = this.onActionCancel.bind(this);
     this.state = {
@@ -30,6 +31,14 @@ class Popup extends Component {
   onStartDelete(activeNode, savedState) {
     this.setState({
       route: 'delete',
+      activeNode,
+      savedState,
+    });
+  }
+
+  onStartUpdate(activeNode, savedState) {
+    this.setState({
+      route: 'update',
       activeNode,
       savedState,
     });
@@ -62,11 +71,19 @@ class Popup extends Component {
         activeNode: state.activeNode,
       });
 
+      case 'update':
+      return h(Updater, {
+        onDone: this.onActionDone,
+        onCancel: this.onActionCancel,
+        activeNode: state.activeNode,
+      });
+
       case 'launch':
       default:
       return h(Launcher, {
         onStartEdit: this.onStartEdit,
         onStartDelete: this.onStartDelete,
+        onStartUpdate: this.onStartUpdate,
         initialState: state.savedState,
       });
     }
