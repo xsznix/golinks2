@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Golinks 2",
   "description": "Your private URL shortener.",
-  "version": "2.1.3",
+  "version": "2.1.4",
 
   "icons": {
     "16": "img/icon16.png",
@@ -13,33 +13,26 @@
   },
 
   "permissions": [
-    "chrome://favicon/",
     "tabs",
     "bookmarks",
+    "favicon",
     "history",
     "storage"
   ],
 
   "background": {
-    "persistent": false,
-    "scripts": [
-      "js/asyncify.js",
-      "js/changelog.js",
-      "js/chromeapi.js",
-      "js/store.js",
-      "js/onboarding.js",
-      "js/main.js"
-    ]
+    "service_worker": "js/main.js"
   },
 
-  "browser_action": {
+  "action": {
     "default_title": "Golinks",
     "default_popup": "popup.html"
   },
 
   "commands": {
-    "_execute_browser_action": {
+    "_execute_action": {
       "suggested_key": {
+        "default": "Ctrl+Shift+Space",
         "windows": "Ctrl+Shift+Space",
         "mac": "Command+Shift+Space",
         "linux": "Ctrl+Shift+Space",
@@ -48,5 +41,7 @@
     }
   },
 
-  "content_security_policy": "script-src 'self'; object-src 'self'"
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }

@@ -42,7 +42,7 @@ class Suggestion extends Component {
         onClick: this.onClick,
       },
       h('div', {class: 'Suggestion-favicon-wrapper'},
-        h('img', {class: 'Suggestion-favicon', src: `chrome://favicon/size/24@2x/${props.node.url}`}),
+        h('img', {class: 'Suggestion-favicon', src: `chrome-extension://${chrome.runtime.id}/_favicon/?pageUrl=${encodeURIComponent(props.node.url)}&size=48`}),
       ),
       h('div', {class: 'Suggestion-text-wrapper'},
         h('div', {class: 'Suggestion-title'}, props.node.title || props.node.url),
